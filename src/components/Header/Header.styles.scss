@@ -1,0 +1,37 @@
+.header {
+    border-bottom: 1px solid #fff5e4;
+    background-color: #fff5e4;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .header-logo {
+    width: 75px;
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-evenly;
+    width: 50%;
+  }
+  
+  .nav-list {
+    display: flex;
+    list-style: none;
+    justify-content: space-evenly;
+    width: 100%;
+  }
+  
+  .nav-items {
+    font-size: 20px;
+    color: #ee6983;
+  }
+  
+  .nav-link {
+    text-decoration: none;
+    color: #850e35;
+  }
