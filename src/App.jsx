@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 
 import Home from "./routes/home/home.component";
 import Header from "./routes/Header/Header.component";
+import CatInfo from "./routes/cat-info/cat-info.component";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Header />}>
           <Route index element={<Home />} />
+          <Route path="/info" element={<CatInfo />} />
           
         </Route>
       </Routes>

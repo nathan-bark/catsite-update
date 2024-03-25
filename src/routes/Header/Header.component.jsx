@@ -1,8 +1,9 @@
 import React from "react";
+import { Outlet, Link } from "react-router-dom";
 
 import catLogo from "../../assets/CatviceLogobyDesigner.png";
+
 import "./Header.styles.scss";
-import { Outlet } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -11,21 +12,15 @@ const Header = () => {
         <img className="header-logo" src={catLogo} alt="Logo" />
         <nav>
           <ul className="nav-list">
-            <li className="nav-items">
-              <a className="nav-link" href="/">
-                Pics
-              </a>
-            </li>
-            <li className="nav-items">
-              <a className="nav-link" href="/info">
-                Info
-              </a>
-            </li>
-            <li className="nav-items">
-              <a className="nav-link" href="new-pet">
-                New Pet
-              </a>
-            </li>
+            <Link className="nav-items" to="/">
+              Pics
+            </Link>
+            <Link className="nav-items" to="/info">
+              Info
+            </Link>
+            <Link className="nav-items" to="/new-pet">
+              New Pet
+            </Link>
           </ul>
         </nav>
       </header>

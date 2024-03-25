@@ -28,10 +28,17 @@
   
   .nav-items {
     font-size: 20px;
-    color: #ee6983;
+    color: #850e35;
+    text-decoration: none;
+  }
+
+  .nav-items:hover {
+    color: #ffc4c4;
+  }
+
+  .nav-items:active {
+    color: #850e35;
+    text-shadow: #850e35 1px 0 10px;
   }
   
-  .nav-link {
-    text-decoration: none;
-    color: #850e35;
-  }
+ 
