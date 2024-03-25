@@ -3,4 +3,12 @@ body{
     background-image: url("./assets/output-onlinepngtools.png");
     background-position: center;
     background-size: contain;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+
 }
+
+
+
+

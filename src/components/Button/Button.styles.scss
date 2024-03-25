@@ -1,0 +1,21 @@
+.btn-main {
+    background-color: #850e35;
+    color: #fff5e4;
+    outline: none;
+    border: 2px solid #850e35;
+    padding: 10px;
+    border-radius: 20px;
+    width: 25%;
+    align-self: center;
+    margin-bottom: 1rem;
+  }
+  .btn-main:hover {
+    background-color: #aa4164;
+    border-color: #fff5e4;
+  }
+  
+  .btn-main:active {
+    color: #b3dd8c;
+    background-color: #ee6983;
+    border-color: #850e35;
+  }
