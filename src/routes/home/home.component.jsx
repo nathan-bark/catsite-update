@@ -1,50 +1,26 @@
-import { useEffect, useState } from "react";
-
-import { TheCatAPI } from "@thatapicompany/thecatapi";
-
-import Header from "../Header/Header.component";
-import Banner from "../../components/Banner/Banner.component";
-import Button from "../../components/Button/Button.component";
 import { useCallback } from "react";
 
-import "./home.styles.scss";
+import Banner from "../../components/Banner/Banner.component";
+import Button from "../../components/Button/Button.component";
 import Spinner from "../../components/spinner/spinner.component";
 
-const Home = () => {
-  const [catImages, setCatImages] = useState([]);
+import "./home.styles.scss";
 
-  const getCatImages = async () => {
-    const apiKey =
-      "live_XWfF1hEAWjI9hbq2bCYKA3h7ysvOZeOP55FLXlKc8PmIdbWv0NbLq8QPxssSj1XT";
-    const theCatAPI = new TheCatAPI(apiKey);
-
-    try {
-      const images = await theCatAPI.images.searchImages({
-        limit: 100,
-      });
-      setCatImages(images);
-      console.log(images);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+const Home = (catImages) => {
+  const catArray = catImages.catImages;
 
   const clickHandler = useCallback(() => {
-    const randomIndex = Math.floor(Math.random() * catImages.length);
-    const randomImage = catImages[randomIndex];
-    if (catImages.length === 0) return;
+    const randomIndex = Math.floor(Math.random() * catArray.length);
+    const randomImage = catArray[randomIndex];
+    if (catArray.length === 0) return;
     document.querySelector(".main-pic").src = randomImage.url;
-  }, [catImages]);
-
-  useEffect(() => {
-    getCatImages();
-  }, []);
+  }, [catArray]);
 
   return (
     <div>
       <Banner />
 
-      {catImages.length === 0 ? (
+      {catArray.length === 0 ? (
         <Spinner />
       ) : (
         <Button buttonText="MEOW!" onClick={clickHandler} />
