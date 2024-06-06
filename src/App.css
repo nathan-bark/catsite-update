@@ -1,6 +1,7 @@
 body{
     background-color: #ffc4c4;
     background-image: url("./assets/output-onlinepngtools.png");
+    background-attachment: fixed;
     background-position: center;
     background-size: contain;
     text-align: center;

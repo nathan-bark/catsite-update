@@ -10,6 +10,7 @@ const CatInfo = () => {
 
   const [breeds, setBreeds] = useState([]);
   const [selectedName, setSelectedName] = useState("");
+  const [selectedTemperament, setSelectedTemperament] = useState("");
   const [selectedDescription, setSelectedDescription] = useState("");
   const [selectedWiki, setSelectedWiki] = useState("");
   const [selectedImage, setSelectedImage] = useState("");
@@ -18,12 +19,13 @@ const CatInfo = () => {
     fetch(fetchUrl)
       .then((response) => response.json())
       .then((data) => {
+        data = data.filter((cat) => cat.image?.url != null);
         setBreeds(data);
       })
       .catch((error) => {
         console.error("Error fetching cat breeds:", error);
       });
-  }, []);
+  }, [fetchUrl]);
 
   useEffect(() => {
     if (breeds.length > 0) {
@@ -34,17 +36,14 @@ const CatInfo = () => {
   const showInfo = (value) => {
     const selectedBreed = breeds.find((breed) => breed.id === value);
     if (selectedBreed) {
-      const { name, description, wikipedia_url, image } = selectedBreed;
+      const { name, temperament, description, wikipedia_url, image } =
+        selectedBreed;
       setSelectedName(name);
+      setSelectedTemperament(temperament);
       setSelectedDescription(description);
       setSelectedWiki(wikipedia_url);
       setSelectedImage(image.url);
-      console.log(
-        selectedName,
-        selectedDescription,
-        selectedWiki,
-        selectedImage
-      );
+      console.log(selectedBreed);
       // Update the state or perform any other actions with the selected breed information
     }
   };
@@ -68,11 +67,14 @@ const CatInfo = () => {
 
       <div>
         <h2>{selectedName}</h2>
+        <p>{selectedTemperament}</p>
         <p>{selectedDescription}</p>
         <a href={selectedWiki} target="_blank" rel="noopener noreferrer">
           Learn More
         </a>
-        <img src={selectedImage} alt={selectedName} />
+        <div className="info-img-container">
+          <img src={selectedImage} alt={selectedName} className="info-pic" />
+        </div>
       </div>
     </div>
   );
