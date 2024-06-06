@@ -9,6 +9,7 @@ import { TheCatAPI } from "@thatapicompany/thecatapi";
 import Home from "./routes/home/home.component";
 import Header from "./routes/Header/Header.component";
 import CatInfo from "./routes/cat-info/cat-info.component";
+import ChooseCat from "./routes/choose-cat/choose-cat.component";
 
 function App() {
   const [catImages, setCatImages] = useState([]);
@@ -39,6 +40,7 @@ function App() {
         <Route path="/" element={<Header />}>
           <Route index element={<Home catImages={catImages}/>} />
           <Route path="/info" element={<CatInfo />} />
+          <Route path="/new-pet" element={<ChooseCat />} />
           
         </Route>
       </Routes>
