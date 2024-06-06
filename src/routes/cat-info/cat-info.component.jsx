@@ -65,17 +65,17 @@ const CatInfo = () => {
         ))}
       </select>
 
-      <div>
+      <div className="description-text">
         <h2>{selectedName}</h2>
-        <p>{selectedTemperament}</p>
+        <p className="info-temperament">{selectedTemperament}</p>
         <p>{selectedDescription}</p>
         <a href={selectedWiki} target="_blank" rel="noopener noreferrer">
           Learn More
         </a>
-        <div className="info-img-container">
+      </div>
+      <div className="info-img-container">
           <img src={selectedImage} alt={selectedName} className="info-pic" />
         </div>
-      </div>
     </div>
   );
 };

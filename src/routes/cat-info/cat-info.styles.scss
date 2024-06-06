@@ -1,11 +1,44 @@
 .info-img-container {
-    width: auto;
-    height: 600px;
+  width: auto;
+  height: 600px;
 }
 
 .info-pic {
-    max-width: 70vw;
-    border-radius: 20px;
-    border: 2px solid #fff5e4;
-    max-height: 55vh;
+  max-width: 70vw;
+  border-radius: 20px;
+  border: 2px solid #fff5e4;
+  max-height: 55vh;
+}
+
+.breed-list {
+  background-color: #fff5e4;
+  color: #ee6983;
+  padding: 8px;
+  border-radius: 10px;
+  border: 2px solid #ee6983;
+  width: 25%;
+}
+
+.description-text {
+    text-align: center;
+    background-color: #fff5e4;
+    color: #850e35;
+    margin: 20px 0px;
+    padding: 8px 0;
+    width: 100%;
+}
+
+.description-text h2 {
+    text-decoration: underline;
+}
+
+.description-text a {
+    text-decoration: none;
+    color:  #ee6983;
+
+}
+
+.info-temperament {
+    font-style: italic;
+    font-weight: 600;
 }
