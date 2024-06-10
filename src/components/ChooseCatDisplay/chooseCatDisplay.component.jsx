@@ -1,3 +1,5 @@
+import './chooseCatComponent.styles.scss'
+
 import Button from "../Button/Button.component";
 
 const characteristicsArray = [
@@ -73,8 +75,8 @@ const ChooseCatDisplay = ({setSelectedCharacteristics, selectedCharacteristics, 
               </label>
             </div>
           ))}
-          <Button onClick={handleSubmit} buttonText={"Submit"}></Button>
         </div>
+        <Button onClick={handleSubmit} buttonText={"Submit"} className="submit-btn"></Button>
       </div>
     )
 }

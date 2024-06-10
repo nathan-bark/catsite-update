@@ -11,16 +11,15 @@ const SelectedCats = ({ selectedCats, setSelectedBreeds, setSelectedCharacterist
     
 
   return (
-    <div>
-      <h2>We found {selectedCats.length} cats for you!</h2>
-
+    <div className='results'>
       <Button buttonText={"Start Over"} onClick={handleStartOver}></Button>
+      <h2 className='cat-results-title'>We found {selectedCats.length} cat{selectedCats.length > 1 && "s"} for you!</h2>
 
       {selectedCats.map((cat) => (
         <div key={cat.id}>
           <h3>{cat.name}</h3>
-          <p>{cat.description}</p>
-          <p>{cat.temperament}</p>
+          <p className='result-description'>{cat.description}</p>
+          <p className='result-temperament'>{cat.temperament}</p>
           {cat.image ? <img src={cat.image.url} alt={cat.name} /> : null}
         </div>
       ))}
