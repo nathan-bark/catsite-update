@@ -28,7 +28,7 @@ const characteristicsArray = [
     "Sweet",
   ];
 
-const ChooseCatDisplay = ({setSelectedCharacteristics, selectedCharacteristics, breeds, setSelectedBreeds}) => {
+const ChooseCatDisplay = ({setSelectedCharacteristics,setNoCats, selectedCharacteristics, breeds, setSelectedBreeds}) => {
 
     const handleCheckboxChange = (event) => {
         const { checked, value } = event.target;
@@ -42,11 +42,19 @@ const ChooseCatDisplay = ({setSelectedCharacteristics, selectedCharacteristics, 
       };
 
       const handleSubmit = () => {
+        if (selectedCharacteristics.length === 0) {
+          alert("Please select at least one characteristic.");
+          return;
+        }
         const filteredBreeds = breeds.filter((breed) => {
           return selectedCharacteristics.every((characteristic) =>
             breed.temperament.includes(characteristic)
           );
         });
+        if (filteredBreeds.length === 0) {
+          setNoCats(true);
+          return;
+        }
         setSelectedBreeds(filteredBreeds);
       };
 

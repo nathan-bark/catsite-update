@@ -5,6 +5,7 @@ import "./choose-cat.styles.scss";
 import Banner from "../../components/Banner/Banner.component";
 import SelectedCats from "../../components/SelectedCatDisplay/SelectedCats.component";
 import ChooseCatDisplay from "../../components/ChooseCatDisplay/chooseCatDisplay.component";
+import NoCatsDisplay from "../../components/NoCats/noCatsDisplay.component";
 
 const ChooseCat = () => {
   const apiKey =
@@ -15,6 +16,7 @@ const ChooseCat = () => {
   const [breeds, setBreeds] = useState([]);
   const [selectedBreeds, setSelectedBreeds] = useState([]);
   const [selectedCharacteristics, setSelectedCharacteristics] = useState([]);
+  const [noCats, setNoCats] = useState(false);
 
   useEffect(() => {
     const fetchBreeds = async () => {
@@ -30,26 +32,39 @@ const ChooseCat = () => {
     fetchBreeds();
   }, []);
 
- 
-
-  return (
-    <div>
-      <Banner />
-
-      {selectedBreeds.length > 0 ? (
+  const display = () => {
+    if (noCats) {
+      return <NoCatsDisplay 
+      setNoCats={setNoCats}
+      setSelectedBreeds={setSelectedBreeds}
+      setSelectedCharacteristics={setSelectedCharacteristics}
+      />;
+    } else if (selectedBreeds.length > 0) {
+      return (
         <SelectedCats
           selectedCats={selectedBreeds}
           setSelectedBreeds={setSelectedBreeds}
           setSelectedCharacteristics={setSelectedCharacteristics}
         />
-      ) : (
+      );
+    } else {    
+      return (
         <ChooseCatDisplay
           selectedCharacteristics={selectedCharacteristics}
           setSelectedCharacteristics={setSelectedCharacteristics}
           breeds={breeds}
           setSelectedBreeds={setSelectedBreeds}
+          setNoCats={setNoCats}
         />
-      )}
+      );
+    }
+  }
+
+  return (
+    <div>
+      <Banner />
+
+      {display()}
     </div>
   );
 };
