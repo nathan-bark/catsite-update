@@ -4,7 +4,7 @@ import "./cat-info.styles.scss";
 
 const CatInfo = () => {
   const apiKey =
-    "?api_key=live_XWfF1hEAWjI9hbq2bCYKA3h7ysvOZeOP55FLXlKc8PmIdbWv0NbLq8QPxssSj1XT";
+    `?api_key=${process.env.REACT_APP_CAT_API_KEY}`;
   const baseUrl = `https://api.thecatapi.com/v1/breeds`;
   const fetchUrl = baseUrl + apiKey;
 
