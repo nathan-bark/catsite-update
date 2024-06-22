@@ -2,6 +2,10 @@ import React, { useEffect, useState } from "react";
 import Banner from "../../components/Banner/Banner.component";
 import "./cat-info.styles.scss";
 
+/**
+ * Renders the CatInfo component.
+ * This component fetches cat breeds from an API and displays information about the selected breed.
+ */
 const CatInfo = () => {
   const apiKey =
     `?api_key=${process.env.REACT_APP_CAT_API_KEY}`;
@@ -15,6 +19,11 @@ const CatInfo = () => {
   const [selectedWiki, setSelectedWiki] = useState("");
   const [selectedImage, setSelectedImage] = useState("");
 
+
+  //fetch cat breeds from the API
+  //filter out breeds without images
+  //set the breeds state
+  //catch any errors
   useEffect(() => {
     fetch(fetchUrl)
       .then((response) => response.json())
@@ -27,13 +36,9 @@ const CatInfo = () => {
       });
   }, [fetchUrl]);
 
-  useEffect(() => {
-    if (breeds.length > 0) {
-      showInfo(breeds[0].id);
-    }
-  }, [breeds]);
 
-  const showInfo = (value) => {
+  //set state for the selected breed
+  const showInfo = React.useCallback((value) => {
     const selectedBreed = breeds.find((breed) => breed.id === value);
     if (selectedBreed) {
       const { name, temperament, description, wikipedia_url, image } =
@@ -43,10 +48,16 @@ const CatInfo = () => {
       setSelectedDescription(description);
       setSelectedWiki(wikipedia_url);
       setSelectedImage(image.url);
-      console.log(selectedBreed);
-      // Update the state or perform any other actions with the selected breed information
     }
-  };
+  }, [breeds]);
+
+
+  //show the first breed in the list when the component mounts
+  useEffect(() => {
+    if (breeds.length > 0) {
+      showInfo(breeds[0].id);
+    }
+  }, [breeds, showInfo]);
 
   return (
     <div>
@@ -58,6 +69,7 @@ const CatInfo = () => {
         id="breeds"
         className="breed-list"
       >
+        {/* map over the breeds array and display the breed name in the dropdown */}
         {breeds.map((breed) => (
           <option key={breed.id} value={breed.id}>
             {breed.name}
@@ -65,6 +77,7 @@ const CatInfo = () => {
         ))}
       </select>
 
+        {/* display the selected breed information */}
       <div className="description-text">
         <h2>{selectedName}</h2>
         <p className="info-temperament">{selectedTemperament}</p>
