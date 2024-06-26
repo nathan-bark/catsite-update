@@ -1,9 +1,6 @@
 import "./App.css";
 
 import { Routes, Route } from "react-router-dom";
-import { useEffect, useState } from "react";
-
-import { TheCatAPI } from "@thatapicompany/thecatapi";
 
 import Home from "./routes/home/home.component";
 import Header from "./routes/Header/Header.component";
