@@ -5,43 +5,19 @@ import { useEffect, useState } from "react";
 
 import { TheCatAPI } from "@thatapicompany/thecatapi";
 
-
 import Home from "./routes/home/home.component";
 import Header from "./routes/Header/Header.component";
 import CatInfo from "./routes/cat-info/cat-info.component";
 import ChooseCat from "./routes/choose-cat/choose-cat.component";
 
 function App() {
-  const [catImages, setCatImages] = useState([]);
-
-  const getCatImages = async () => {
-    const apiKey =
-      "live_XWfF1hEAWjI9hbq2bCYKA3h7ysvOZeOP55FLXlKc8PmIdbWv0NbLq8QPxssSj1XT";
-    const theCatAPI = new TheCatAPI(apiKey);
-
-    try {
-      const images = await theCatAPI.images.searchImages({
-        limit: 100,
-      });
-      setCatImages(images);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    getCatImages();
-  }, []);
-
-
   return (
     <div>
       <Routes>
         <Route path="/" element={<Header />}>
-          <Route index element={<Home catImages={catImages}/>} />
+          <Route index element={<Home />} />
           <Route path="/info" element={<CatInfo />} />
           <Route path="/new-pet" element={<ChooseCat />} />
-          
         </Route>
       </Routes>
     </div>
