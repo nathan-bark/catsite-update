@@ -31,7 +31,6 @@ const ChooseCat = () => {
   //set the breeds state
   //catch any errors
   useEffect(() => {
-    console.log(apiKey);
     const fetchBreeds = async () => {
       try {
         const response = await fetch(fetchUrl);
@@ -43,7 +42,7 @@ const ChooseCat = () => {
     };
 
     fetchBreeds();
-  }, [fetchUrl, apiKey]);
+  }, [fetchUrl]);
 
   const display = () => {
     //display the appropriate component based on the state
