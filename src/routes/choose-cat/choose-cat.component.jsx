@@ -43,7 +43,7 @@ const ChooseCat = () => {
     };
 
     fetchBreeds();
-  }, [fetchUrl]);
+  }, [fetchUrl, apiKey]);
 
   const display = () => {
     //display the appropriate component based on the state
